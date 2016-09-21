@@ -25,8 +25,6 @@ Tests translate well from user stories. A well tested application will be more r
 
 ## Do You Test?
 
-We first encountered Test Driven Development during Unit 2, when we ran & passed unit tests in Ruby using RSpec.
-
 Sort yourselves into the following categories:
 
 1. I have used TDD, and I loved it.
@@ -80,7 +78,7 @@ Now that we have our features outlined, we're going to start turning it into tes
 
 ### Specs
 
-Remember from RSpec that tests followed a "describe...it" format, like so:
+Tests follow a "describe...it" format, like so:
 
 - describe "A snowman"
   - it "should have a name"
@@ -89,14 +87,14 @@ Remember from RSpec that tests followed a "describe...it" format, like so:
   - describe "a snowman named Olaf"
     - it "should like warm hugs"
 
-Today we'll be using a Javascript testing framework called Jasmine. It's the same thing as RSpec, just for Javascript. It uses "describe" and "it", just like RSpec.
-
+Today we'll be using a Javascript testing framework called Jasmine.
 
 ## Jasmine
 
 Jasmine is only one testing framework. There's [Mocha](https://mochajs.org/), [QUnit](https://qunitjs.com/) and more... However, they're all very similar. Most use the same "describe...it" syntax.
 
 ### Getting set up
+
 First, we're going to install jasmine-node globally.
 
 It doesn't matter where you run this code:
@@ -105,9 +103,7 @@ It doesn't matter where you run this code:
 $ npm install  -g jasmine-node
 ```
 
-Now, `cd` into your project folder. If you don't have a project folder, go ahead and make one. It doesn't really matter what folder you use for what we're about to do, but if you can, you may as well get some of your project done now so you don't have to later!
-
-I'm going to create a folder for a `snowman-constructor` project.
+Let's start from an empty directory and see how we'd get tests set up.
 
 Inside your project folder, create a new folder called `spec`:
 
@@ -146,13 +142,13 @@ If you run `jasmine-node` at this point, you'll just get an error. We need to pr
 A Jasmine test file will look like this:
 
 ```js
-describe("the test subject", function(){
+describe("the test subject", function() {
 
-  it("should have this quality", function(){
+  it("should have this quality", function() {
 
   });
 
-  it("should have this other quality", function(){
+  it("should have this other quality", function() {
 
   });
 
@@ -168,10 +164,10 @@ An `it` statement's function contains the code that will do the actual testing. 
 For the snowman builder, the result would be this:
 
 ```js
-describe( "A snowman", function(){
+describe( "A snowman", function() {
 
   //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
+  it( "should have a name", function() {
 
   });
 
@@ -186,9 +182,9 @@ describe( "A snowman", function(){
   });
 
   //If the snowman is named Olaf, he should like warm hugs.
-  describe( "a snowman named Olaf", function(){
+  describe( "a snowman named Olaf", function() {
 
-    it( "should like warm hugs", function(){
+    it( "should like warm hugs", function() {
 
     });
 
@@ -207,7 +203,7 @@ Finished in 0.009 seconds
 4 tests, 0 assertions, 0 failures, 0 skipped
 ```
 
-Just like in RSpec, each green dot indicates a passing test.
+Each green dot indicates a passing test.
 
 If I add the `--verbose` flag, I get:
 
@@ -226,11 +222,11 @@ Finished in 0.01 seconds
 4 tests, 0 assertions, 0 failures, 0 skipped
 ```
 
-### You Do: Update your code so that it has the proper syntax
+### Update the code to the proper syntax
 
 This includes adding the appropriate parentheses, double-quotes, semicolons, and functions.
 
-When you're done, you should be able to run `jasmine-node spec` with no failing tests.
+When done, run `jasmine-node spec` with no failing tests.
 
 The fact that these tests "pass" doesn't really mean anything since the tests don't actually test anything -- but at least we know there aren't any syntax errors.
 
@@ -243,7 +239,7 @@ What you've done so far is create a **test suite**.
 **The Suite**.
 
 ```js
-describe( "A snowman", function(){
+describe( "A snowman", function() {
   // Specs go here.
 });
 ```
@@ -302,7 +298,7 @@ expect( olaf.constructor.name ).toBe("Snowman");
 expect( olaf instanceof Snowman).toBeTruthy();
 ```
 
->Note: Those last two won't work with function expressions (`var Snowman = function(){}`); only with function declarations (`function Snowman(){}`).
+>Note: Those last two won't work with function expressions (`var Snowman = function() {}`); only with function declarations (`function Snowman() {}`).
 
 A full list of Jasmine's native matchers can be found [here](http://jasmine.github.io/edge/introduction.html#section-Expectations).
 
@@ -313,7 +309,7 @@ If you're feeling adventurous, you can even [create your own custom matcher](htt
 ```js
 describe( "A snowman", function() {
 
-  it( "should have a name", function(){
+  it( "should have a name", function() {
     var olaf = new Snowman("Olaf");
     expect( olaf.name ).toBeDefined();
   });
@@ -358,10 +354,10 @@ Next, I'm going to `require` that file inside my spec file:
 ```js
 var Snowman = require("../snowman");
 
-describe( "A snowman", function(){
+describe( "A snowman", function() {
 
   //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
+  it( "should have a name", function() {
     var olaf = new Snowman("Olaf");
     expect( olaf.name ).toBeDefined();
   });
@@ -408,10 +404,10 @@ This process is often abbreviated **Red, Green, Refactor**: write a failing test
 ```js
 var Snowman = require("../snowman");
 
-describe( "A snowman", function(){
+describe( "A snowman", function() {
 
   //My winter wonderland is a friendly place, so I want each snowman to have a name.
-  it( "should have a name", function(){
+  it( "should have a name", function() {
     var olaf = new Snowman("Olaf");
     expect( olaf.name ).toBeDefined();
   });
@@ -429,8 +425,8 @@ describe( "A snowman", function(){
   });
 
   //If the snowman is named Olaf, he should like warm hugs.
-  describe("A snowman named Olaf", function(){
-    it( "should like warm hugs", function(){
+  describe("A snowman named Olaf", function() {
+    it( "should like warm hugs", function() {
       var frosty = new Snowman("Frosty");
       var olaf = new Snowman("Olaf");
       expect( olaf.hug() ).toBe( "I like warm hugs!" );
@@ -441,15 +437,13 @@ describe( "A snowman", function(){
 });
 ```
 
-I'm not even going to bother running `spec` because I know all but one of these tests will fail. That's not important right now. The important thing is that I'm writing `expect` statements that make sense to me because this will inform the coding decisions I make later.
-
-## You do: Add an expectation to your code
+## Add an expectation to your code
 
 - Pair-up with someone in groups of two to three.
 - Together, come up with an origional expectation! What would be something fun our snowman is able to do?
 - Write down this expectations in plain English.
 
->Note: What names does it sense for the different variables/methods to have? The one who designs the spec, designs the code!
+>Note: The one who designs the spec, designs the code!
 
 **Take 5 minutes** to add the expectation to the suite on your own. Then...
 **Take 5 minutes** to meet up with your group and review each others' expectations.
@@ -462,18 +456,18 @@ What's not DRY about my tests? What repeats?
 
 `var olaf = new Snowman("Olaf");`
 
-In RSpec we could DRY up tests by making a piece of code run *before each* test. We can do the same thing here:
+We can DRY up tests by making a piece of code run *before each* test:
 
 ``` js
-describe( "A snowman", function(){
+describe( "A snowman", function() {
   var olaf;
 
   // this code get run before each spec
-  beforeEach(function(){
+  beforeEach(function() {
     olaf = new Snowman("Olaf");
   });
 
-  it( "should have a name", function(){
+  it( "should have a name", function() {
     expect( olaf.name ).toBeDefined();
   });
 
@@ -481,9 +475,9 @@ describe( "A snowman", function(){
     expect ( olaf.features ).toContain("carrot nose", "stick arms");
   });
 
-  describe("A snowman named Olaf", function(){
+  describe("A snowman named Olaf", function() {
     var frosty;
-    it( "should like warm hugs", function(){
+    it( "should like warm hugs", function() {
       frosty = new Snowman("Frosty");
       expect( olaf.hug() ).toBe( "I like warm hugs!" );
       expect( frosty.hug() ).not.toBe( "I like warm hugs!" );
@@ -503,7 +497,7 @@ function Snowman(name) {
 }
 
 Snowman.prototype = {
-  hug: function(){
+  hug: function() {
     if (this.name == "Olaf") {
       return "I like warm hugs!";
     }
@@ -541,7 +535,7 @@ Here are some examples:
 
 ```js
 // ...
-it("can be saved to the database", function(){
+it("can be saved to the database", function() {
   var olaf = new Snowman("Olaf");
   olaf.save().then(function(err, docs){
     // err will always be null if the database action was successful
@@ -549,7 +543,7 @@ it("can be saved to the database", function(){
   });
 });
 
-it("makes a successful AJAX request", function(){
+it("makes a successful AJAX request", function() {
   var olaf = new Snowman("Olaf");
   $.getJSON("http://snowhub.com").then(function(response){
     expect( response[0].name ).toBe( "John Snow" );
