@@ -4,7 +4,7 @@ function Snowman(name) {
 }
 
 Snowman.prototype = {
-  hug: function(){
+  hug: function() {
     if (this.name == "Olaf") {
       return "I like warm hugs!";
     }
