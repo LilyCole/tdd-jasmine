@@ -375,7 +375,7 @@ describe( "A snowman", function(){
 
 ## The Process, Recontextualized
 
-![tdd flowchart](img/tdd-flowchart.png)
+![tdd flowchart](assets/imgs/tdd-flowchart.png)
 
 A planning-oriented approach TDD
 
